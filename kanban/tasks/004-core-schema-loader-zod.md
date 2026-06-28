@@ -1,10 +1,12 @@
 ---
 id: 4
 title: 'Core: Schema Loader (Zod)'
-status: backlog
+status: done
 priority: high
 created: 2026-06-28T12:55:00.1040965+02:00
-updated: 2026-06-28T13:48:22.579345723+02:00
+updated: 2026-06-28T15:26:36.437844877+02:00
+started: 2026-06-28T15:21:19.064299795+02:00
+completed: 2026-06-28T15:26:36.439817365+02:00
 tags:
     - core
 depends_on:
