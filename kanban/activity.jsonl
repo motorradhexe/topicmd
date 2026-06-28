@@ -75,3 +75,4 @@
 {"timestamp":"2026-06-28T15:48:09.441822968+02:00","action":"edit","task_id":9,"detail":"CLI: scaffold + validate + index"}
 {"timestamp":"2026-06-28T15:48:09.441894904+02:00","action":"release","task_id":9,"detail":"lake-solar"}
 {"timestamp":"2026-06-28T15:48:09.78214205+02:00","action":"move","task_id":9,"detail":"in-progress -\u003e done"}
+{"timestamp":"2026-06-28T16:47:53.697285665+02:00","action":"create","task_id":19,"detail":"Repo-Root README.md erstellen"}
