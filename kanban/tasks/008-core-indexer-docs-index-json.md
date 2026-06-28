@@ -1,10 +1,12 @@
 ---
 id: 8
 title: 'Core: Indexer → docs.index.json'
-status: backlog
+status: done
 priority: high
 created: 2026-06-28T12:55:00.8720986+02:00
-updated: 2026-06-28T13:48:23.676098729+02:00
+updated: 2026-06-28T15:41:30.247075517+02:00
+started: 2026-06-28T15:35:57.472604545+02:00
+completed: 2026-06-28T15:41:30.247927567+02:00
 tags:
     - core
 depends_on:
