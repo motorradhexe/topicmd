@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { loadSchema } from '../schema/index.js';
-import { indexProject, loadVariables, serializeIndex } from './index.js';
+import { discoverTopics, indexProject, loadVariables, serializeIndex } from './index.js';
 
 const basicRoot = fileURLToPath(
   new URL('../../../../examples/basic', import.meta.url),
@@ -16,6 +16,24 @@ function buildFixtureIndex() {
     variables: loadVariables(`${basicRoot}/docs.vars.yaml`),
   });
 }
+
+describe('discoverTopics (basic example fixture)', () => {
+  it('finds the same topics indexProject indexes (single discovery path)', () => {
+    const topics = discoverTopics({ rootDir: basicRoot, schema, contentDir: `${basicRoot}/docs` });
+    const discovered = topics.map((t) => `${t.id}@${t.locale}`).sort();
+    const indexed = buildFixtureIndex()
+      .topics.map((t) => `${t.id}@${t.locale}`)
+      .sort();
+    expect(discovered).toEqual(indexed);
+  });
+
+  it('excludes the fragments dir even when scanning the root', () => {
+    const ids = discoverTopics({ rootDir: basicRoot, schema, contentDir: basicRoot }).map(
+      (t) => t.id,
+    );
+    expect(ids).not.toContain('fragments/prerequisites-admin');
+  });
+});
 
 describe('indexProject (basic example fixture)', () => {
   const index = buildFixtureIndex();

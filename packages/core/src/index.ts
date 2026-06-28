@@ -9,7 +9,13 @@ export const VERSION = '0.0.0';
 
 export { validateTopic, validateTopics } from './validator/index.js';
 
-export { buildIndex, indexProject, serializeIndex } from './indexer/index.js';
+export {
+  buildIndex,
+  indexProject,
+  discoverTopics,
+  walkMarkdown,
+  serializeIndex,
+} from './indexer/index.js';
 export type {
   DocsIndex,
   IndexedTopic,
@@ -22,6 +28,7 @@ export type {
   StaleTranslation,
   BuildIndexInput,
   IndexProjectOptions,
+  DiscoverTopicsOptions,
 } from './indexer/index.js';
 
 export { loadSchema, parseSchema, SchemaError, docsSchemaZod } from './schema/index.js';

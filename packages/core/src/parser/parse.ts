@@ -19,6 +19,7 @@ import type { Root } from 'mdast';
 import { unified } from 'unified';
 import { visit } from 'unist-util-visit';
 import type { Topic, TopicFrontmatter } from '../types/index.js';
+import { makeIncludeRegex } from './include.js';
 
 /** A heading extracted from the body, used for structural contracts (#7). */
 export interface TopicHeading {
@@ -61,9 +62,6 @@ export interface TopicParserOptions {
   locales?: string[];
 }
 
-/** Matches `<!-- @include: path/to/fragment.md -->` (HTML-comment include). */
-const INCLUDE_RE = /<!--\s*@include:\s*(.+?)\s*-->/g;
-
 interface DerivedIdentity {
   id: string;
   locale: string;
@@ -102,7 +100,7 @@ function buildProcessor(mdx: boolean) {
 
 function extractIncludes(raw: string): IncludeDirective[] {
   const includes: IncludeDirective[] = [];
-  for (const m of raw.matchAll(INCLUDE_RE)) {
+  for (const m of raw.matchAll(makeIncludeRegex())) {
     includes.push({ target: m[1]!.trim(), raw: m[0] });
   }
   return includes;
