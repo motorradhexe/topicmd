@@ -2,12 +2,32 @@
  * @topicmd/core — public entry.
  *
  * Exposes the declarative type surface (#2), the schema loader (#4), the topic
- * parser (#5), the fragment resolver (#6), and the validator (#7). Further
- * runtime exports land in later tasks: indexer (#8), etc.
+ * parser (#5), the fragment resolver (#6), the validator (#7), and the indexer
+ * (#8).
  */
 export const VERSION = '0.0.0';
 
 export { validateTopic, validateTopics } from './validator/index.js';
+
+export {
+  buildIndex,
+  indexProject,
+  serializeIndex,
+  loadVariables,
+} from './indexer/index.js';
+export type {
+  DocsIndex,
+  IndexedTopic,
+  IndexedFragment,
+  IndexLink,
+  DuplicateGroup,
+  IndexRelationships,
+  CoverageGap,
+  IndexCoverage,
+  StaleTranslation,
+  BuildIndexInput,
+  IndexProjectOptions,
+} from './indexer/index.js';
 
 export { loadSchema, parseSchema, SchemaError, docsSchemaZod } from './schema/index.js';
 
