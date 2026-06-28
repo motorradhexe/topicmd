@@ -1,10 +1,12 @@
 ---
 id: 14
 title: 'Core: Variablen-Auflösung (docs.vars.yaml, {{vars.*}})'
-status: backlog
+status: done
 priority: high
 created: 2026-06-28T13:47:31.608680318+02:00
-updated: 2026-06-28T13:47:31.608680318+02:00
+updated: 2026-06-28T16:51:41.55960623+02:00
+started: 2026-06-28T16:48:00.516368797+02:00
+completed: 2026-06-28T16:51:41.560822175+02:00
 tags:
     - core
 depends_on:
