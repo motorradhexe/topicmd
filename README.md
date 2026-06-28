@@ -92,7 +92,7 @@ Common options: `--schema <path>` (default `docs.schema.yaml`), `--root <dir>`
 - **Quick Scaffold** — the `topicmd: New Topic…` command creates a new topic
   with schema-valid frontmatter (same logic as `topicmd scaffold`).
 
-Build the extension bundle with `pnpm --filter @topicmd/vscode build`.
+Build the extension bundle with `pnpm --filter topicmd-vscode build`.
 
 ## Project layout
 

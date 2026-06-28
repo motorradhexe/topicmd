@@ -1,10 +1,12 @@
 ---
 id: 25
 title: 'VSCode: Extension release-fähig (ohne Marketplace-Publish)'
-status: todo
+status: done
 priority: medium
 created: 2026-06-28T18:30:00+02:00
-updated: 2026-06-28T18:30:00+02:00
+updated: 2026-06-28T20:03:00+02:00
+started: 2026-06-28T19:58:00+02:00
+completed: 2026-06-28T20:03:00+02:00
 tags:
     - vscode
     - release

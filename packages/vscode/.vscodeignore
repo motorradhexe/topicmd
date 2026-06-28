@@ -1,0 +1,7 @@
+# Only ship the bundled extension and its metadata. Everything else is dev-only.
+**
+!dist/extension.js
+!package.json
+!README.md
+!LICENSE
+!icon.png

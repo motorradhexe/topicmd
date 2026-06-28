@@ -1,0 +1,47 @@
+name: Package VS Code extension
+
+# Builds and packages the extension into a .vsix and uploads it as a build
+# artifact. It does NOT publish to the Marketplace — publishing needs a publisher
+# account and a VSCE_PAT secret. To enable publishing later, add a step:
+#   - run: pnpm --filter topicmd-vscode exec vsce publish --no-dependencies
+#     env: { VSCE_PAT: ${{ secrets.VSCE_PAT }} }
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'vscode-v*'
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        # No --ignore-scripts here: esbuild needs its build step to bundle the
+        # extension. pnpm-workspace.yaml allows esbuild and skips vsce's
+        # publish-only native deps (keytar, vsce-sign).
+        run: pnpm install --frozen-lockfile
+
+      - name: Build core (project references)
+        run: pnpm build
+
+      - name: Package extension (.vsix)
+        run: pnpm --filter topicmd-vscode package
+
+      - name: Upload .vsix artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: topicmd-vscode-vsix
+          path: packages/vscode/*.vsix
+          if-no-files-found: error

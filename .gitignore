@@ -5,3 +5,4 @@ dist/
 .env
 docs.index.json
 coverage/
+*.vsix
