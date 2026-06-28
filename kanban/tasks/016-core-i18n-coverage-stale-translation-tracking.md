@@ -1,10 +1,12 @@
 ---
 id: 16
 title: 'Core: i18n-Coverage + Stale-Translation-Tracking'
-status: backlog
+status: done
 priority: high
 created: 2026-06-28T13:47:32.358745515+02:00
-updated: 2026-06-28T13:47:32.358745515+02:00
+updated: 2026-06-28T16:59:28.395699517+02:00
+started: 2026-06-28T16:55:52.269292032+02:00
+completed: 2026-06-28T16:59:28.396492094+02:00
 tags:
     - core
 depends_on:

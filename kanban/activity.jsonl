@@ -86,3 +86,8 @@
 {"timestamp":"2026-06-28T16:55:42.666608947+02:00","action":"edit","task_id":15,"detail":"Core: Profile-Resolution + Nav-Builder (Manifeste + profiles.json)"}
 {"timestamp":"2026-06-28T16:55:42.66678425+02:00","action":"release","task_id":15,"detail":"lake-solar"}
 {"timestamp":"2026-06-28T16:55:42.950464188+02:00","action":"move","task_id":15,"detail":"in-progress -\u003e done"}
+{"timestamp":"2026-06-28T16:55:52.269549993+02:00","action":"claim","task_id":16,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T16:55:52.269710451+02:00","action":"move","task_id":16,"detail":"backlog -\u003e in-progress"}
+{"timestamp":"2026-06-28T16:59:28.120194054+02:00","action":"edit","task_id":16,"detail":"Core: i18n-Coverage + Stale-Translation-Tracking"}
+{"timestamp":"2026-06-28T16:59:28.1204456+02:00","action":"release","task_id":16,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T16:59:28.396669413+02:00","action":"move","task_id":16,"detail":"in-progress -\u003e done"}
