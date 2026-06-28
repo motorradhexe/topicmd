@@ -1,0 +1,6 @@
+title: Admin Documentation
+sections:
+  - Overview:
+      - ./docs/concepts/what-is-alpha.md
+  - Reference:
+      - ./docs/reference/api.md

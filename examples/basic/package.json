@@ -1,0 +1,6 @@
+{
+  "name": "@topicmd/example-basic",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Minimal topicmd example project, used as the canonical test fixture for core modules."
+}

@@ -1,0 +1,5 @@
+# Project-wide substitution values, referenced via {{vars.*}} in topics.
+vars:
+  product_name: Alpha
+  company: Acme Corp
+  support_email: support@example.com
