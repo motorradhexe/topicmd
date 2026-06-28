@@ -31,3 +31,4 @@
 {"timestamp":"2026-06-28T13:48:24.547789292+02:00","action":"edit","task_id":11,"detail":"VSCode Extension: Frontmatter Intelligence"}
 {"timestamp":"2026-06-28T13:48:24.817951911+02:00","action":"edit","task_id":12,"detail":"VSCode Extension: Quick Scaffold"}
 {"timestamp":"2026-06-28T13:48:25.086830646+02:00","action":"edit","task_id":13,"detail":"GitHub Pages via GitHub Actions: Projektdokumentation aufsetzen"}
+{"timestamp":"2026-06-28T13:52:51.988786119+02:00","action":"edit","task_id":1,"detail":"Monorepo scaffold: pnpm, tsconfig, vitest"}
