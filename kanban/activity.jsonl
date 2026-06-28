@@ -70,3 +70,8 @@
 {"timestamp":"2026-06-28T15:41:29.960469395+02:00","action":"edit","task_id":8,"detail":"Core: Indexer → docs.index.json"}
 {"timestamp":"2026-06-28T15:41:29.960550036+02:00","action":"release","task_id":8,"detail":"lake-solar"}
 {"timestamp":"2026-06-28T15:41:30.248094256+02:00","action":"move","task_id":8,"detail":"in-progress -\u003e done"}
+{"timestamp":"2026-06-28T15:41:46.477604748+02:00","action":"claim","task_id":9,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T15:41:46.477727726+02:00","action":"move","task_id":9,"detail":"backlog -\u003e in-progress"}
+{"timestamp":"2026-06-28T15:48:09.441822968+02:00","action":"edit","task_id":9,"detail":"CLI: scaffold + validate + index"}
+{"timestamp":"2026-06-28T15:48:09.441894904+02:00","action":"release","task_id":9,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T15:48:09.78214205+02:00","action":"move","task_id":9,"detail":"in-progress -\u003e done"}

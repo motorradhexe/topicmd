@@ -1,10 +1,12 @@
 ---
 id: 9
 title: 'CLI: scaffold + validate + index'
-status: backlog
+status: done
 priority: high
 created: 2026-06-28T12:55:01.0632364+02:00
-updated: 2026-06-28T13:48:23.943676439+02:00
+updated: 2026-06-28T15:48:09.780470848+02:00
+started: 2026-06-28T15:41:46.477086719+02:00
+completed: 2026-06-28T15:48:09.781749931+02:00
 tags:
     - cli
 depends_on:
