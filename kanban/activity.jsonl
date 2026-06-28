@@ -40,3 +40,8 @@
 {"timestamp":"2026-06-28T15:16:50.43493845+02:00","action":"edit","task_id":2,"detail":"Core: TypeScript-Typdefinitionen (Topic, DocsSchema, ValidationResult)"}
 {"timestamp":"2026-06-28T15:16:50.437387355+02:00","action":"release","task_id":2,"detail":"lake-solar"}
 {"timestamp":"2026-06-28T15:16:50.715129485+02:00","action":"move","task_id":2,"detail":"in-progress -\u003e done"}
+{"timestamp":"2026-06-28T15:16:59.434166423+02:00","action":"claim","task_id":3,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T15:16:59.434250113+02:00","action":"move","task_id":3,"detail":"backlog -\u003e in-progress"}
+{"timestamp":"2026-06-28T15:21:10.079871314+02:00","action":"edit","task_id":3,"detail":"examples/basic/ Fixtures anlegen"}
+{"timestamp":"2026-06-28T15:21:10.080091859+02:00","action":"release","task_id":3,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T15:21:10.505337087+02:00","action":"move","task_id":3,"detail":"in-progress -\u003e done"}

@@ -1,10 +1,12 @@
 ---
 id: 3
 title: examples/basic/ Fixtures anlegen
-status: backlog
+status: done
 priority: high
 created: 2026-06-28T12:54:59.8610341+02:00
-updated: 2026-06-28T13:48:22.291490248+02:00
+updated: 2026-06-28T15:21:10.503765593+02:00
+started: 2026-06-28T15:16:59.433946337+02:00
+completed: 2026-06-28T15:21:10.505110401+02:00
 tags:
     - foundation
 depends_on:
