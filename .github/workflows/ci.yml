@@ -19,17 +19,19 @@ jobs:
         with:
           node-version: 20
 
+      - name: Get pnpm store directory
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path)" >> "$GITHUB_ENV"
+
       - name: Cache pnpm store
         uses: actions/cache@v4
         with:
-          path: ~/.pnpm-store
+          path: ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: ${{ runner.os }}-pnpm-
 
       - name: Install dependencies
-        run: |
-          pnpm config set store-dir ~/.pnpm-store
-          pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Typecheck (and build)
         run: pnpm typecheck
