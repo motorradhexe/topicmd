@@ -13,25 +13,18 @@ jobs:
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 11.9.0
 
+      # pnpm 11 requires node:sqlite, which needs Node >= 22.5 (stable in 24).
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
+          cache: pnpm
 
       - name: Install dependencies
-        shell: bash
-        run: |
-          echo "pnpm $(pnpm --version) on node $(node --version)"
-          set +e
-          pnpm install --frozen-lockfile --ignore-scripts 2>&1 | tee /tmp/install.log
-          code=${PIPESTATUS[0]}
-          if [ "$code" -ne 0 ]; then
-            echo "::error::install failed (exit $code) pnpm=$(pnpm --version): $(tail -c 1500 /tmp/install.log | tr '\n' ' ')"
-          fi
-          exit "$code"
+        # --ignore-scripts skips dependency build scripts (esbuild's postinstall),
+        # which CI doesn't need; pnpm otherwise errors on unapproved builds.
+        run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: Typecheck (and build)
         run: pnpm typecheck
