@@ -15,6 +15,7 @@
     "build": "tsc -b"
   },
   "dependencies": {
-    "@topicmd/core": "workspace:*"
+    "@topicmd/core": "workspace:*",
+    "commander": "^15.0.0"
   }
 }

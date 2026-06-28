@@ -1,10 +1,50 @@
 #!/usr/bin/env node
 /**
- * @topicmd/cli — placeholder entry.
+ * @topicmd/cli — command-line interface over @topicmd/core.
  *
- * The commander-based commands (validate / index / scaffold) land in task #9,
- * with nav build / i18n status following in #17.
+ * MVP commands: validate, index, scaffold. nav build / i18n status follow (#17).
  */
+import { argv } from 'node:process';
+import { pathToFileURL } from 'node:url';
+import { Command } from 'commander';
 import { VERSION } from '@topicmd/core';
+import { validateAction } from './commands/validate.js';
+import { indexAction } from './commands/index-cmd.js';
+import { scaffoldAction } from './commands/scaffold.js';
 
-console.log(`topicmd ${VERSION}`);
+export function buildProgram(): Command {
+  const program = new Command();
+  program
+    .name('topicmd')
+    .description('Semantic structure and AI-assisted topic management for Markdown docs')
+    .version(VERSION);
+
+  const withCommon = (cmd: Command): Command =>
+    cmd
+      .option('-s, --schema <path>', 'path to docs.schema.yaml', 'docs.schema.yaml')
+      .option('-r, --root <dir>', 'project root (defaults to the schema directory)')
+      .option('-c, --content <dir>', 'directory scanned for topics (defaults to root)');
+
+  withCommon(program.command('validate'))
+    .description('validate all topics against the schema (exit 1 on errors)')
+    .action(validateAction);
+
+  withCommon(program.command('index'))
+    .description('generate docs.index.json')
+    .option('-o, --out <path>', 'output path (defaults to <root>/docs.index.json)')
+    .action(indexAction);
+
+  withCommon(program.command('scaffold'))
+    .argument('<type>', 'topic type to scaffold (e.g. concept, task, reference)')
+    .description('create a new topic with valid frontmatter for the given type')
+    .option('-t, --title <title>', 'topic title')
+    .option('-o, --out <path>', 'write to a file instead of stdout')
+    .action(scaffoldAction);
+
+  return program;
+}
+
+// Only parse argv when run as the executable, not when imported by tests.
+if (argv[1] && import.meta.url === pathToFileURL(argv[1]).href) {
+  buildProgram().parse();
+}
