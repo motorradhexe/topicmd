@@ -6,3 +6,4 @@ dist/
 docs.index.json
 coverage/
 *.vsix
+.astro/

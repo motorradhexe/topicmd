@@ -1,10 +1,12 @@
 ---
 id: 27
 title: 'Docs-Site: echte technische Doku auf Astro Starlight (CLI + Extension)'
-status: todo
+status: done
 priority: medium
 created: 2026-06-28T18:30:00+02:00
-updated: 2026-06-28T18:30:00+02:00
+updated: 2026-06-28T20:12:00+02:00
+started: 2026-06-28T20:04:00+02:00
+completed: 2026-06-28T20:12:00+02:00
 tags:
     - docs
     - pages
