@@ -35,3 +35,8 @@
 {"timestamp":"2026-06-28T13:53:42.989237611+02:00","action":"edit","task_id":1,"detail":"Monorepo scaffold: pnpm, tsconfig, vitest"}
 {"timestamp":"2026-06-28T13:53:42.989479795+02:00","action":"release","task_id":1,"detail":"kelp-hail"}
 {"timestamp":"2026-06-28T13:53:43.254766939+02:00","action":"move","task_id":1,"detail":"in-progress -\u003e done"}
+{"timestamp":"2026-06-28T14:13:15.022468951+02:00","action":"claim","task_id":2,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T14:13:15.022536324+02:00","action":"move","task_id":2,"detail":"backlog -\u003e in-progress"}
+{"timestamp":"2026-06-28T15:16:50.43493845+02:00","action":"edit","task_id":2,"detail":"Core: TypeScript-Typdefinitionen (Topic, DocsSchema, ValidationResult)"}
+{"timestamp":"2026-06-28T15:16:50.437387355+02:00","action":"release","task_id":2,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T15:16:50.715129485+02:00","action":"move","task_id":2,"detail":"in-progress -\u003e done"}

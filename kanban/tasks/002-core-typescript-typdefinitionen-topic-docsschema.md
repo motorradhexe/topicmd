@@ -1,10 +1,12 @@
 ---
 id: 2
 title: 'Core: TypeScript-Typdefinitionen (Topic, DocsSchema, ValidationResult)'
-status: backlog
+status: done
 priority: high
 created: 2026-06-28T12:54:59.6570411+02:00
-updated: 2026-06-28T13:48:21.980125303+02:00
+updated: 2026-06-28T15:16:50.713256965+02:00
+started: 2026-06-28T14:13:15.022229615+02:00
+completed: 2026-06-28T15:16:50.714875208+02:00
 tags:
     - foundation
 depends_on:
