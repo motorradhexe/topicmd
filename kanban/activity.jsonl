@@ -81,3 +81,8 @@
 {"timestamp":"2026-06-28T16:51:41.293935172+02:00","action":"edit","task_id":14,"detail":"Core: Variablen-Auflösung (docs.vars.yaml, {{vars.*}})"}
 {"timestamp":"2026-06-28T16:51:41.294077852+02:00","action":"release","task_id":14,"detail":"lake-solar"}
 {"timestamp":"2026-06-28T16:51:41.561068314+02:00","action":"move","task_id":14,"detail":"in-progress -\u003e done"}
+{"timestamp":"2026-06-28T16:51:57.902200497+02:00","action":"claim","task_id":15,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T16:51:57.902436831+02:00","action":"move","task_id":15,"detail":"backlog -\u003e in-progress"}
+{"timestamp":"2026-06-28T16:55:42.666608947+02:00","action":"edit","task_id":15,"detail":"Core: Profile-Resolution + Nav-Builder (Manifeste + profiles.json)"}
+{"timestamp":"2026-06-28T16:55:42.66678425+02:00","action":"release","task_id":15,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T16:55:42.950464188+02:00","action":"move","task_id":15,"detail":"in-progress -\u003e done"}
