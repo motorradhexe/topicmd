@@ -1,12 +1,6 @@
 /**
- * @topicmd/core — public entry.
- *
- * Currently exposes the declarative type surface (#2). Runtime exports land in
- * later tasks: schema loader (#4), topic parser (#5), fragment resolver (#6),
- * validator (#7), indexer (#8), etc.
+ * Public type surface of @topicmd/core. Re-exports all declarative types.
  */
-export const VERSION = '0.0.0';
-
 export type {
   FormatConfig,
   FragmentsConfig,
@@ -18,11 +12,17 @@ export type {
   I18nStrategy,
   I18nConfig,
   DocsSchema,
+} from './schema.js';
+
+export type {
   DimensionAssignment,
   TopicFrontmatter,
   Topic,
   Fragment,
+} from './topic.js';
+
+export type {
   DiagnosticSeverity,
   Diagnostic,
   ValidationResult,
-} from './types/index.js';
+} from './validation.js';
