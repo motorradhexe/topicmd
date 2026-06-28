@@ -11,6 +11,8 @@ import { VERSION } from '@topicmd/core';
 import { validateAction } from './commands/validate.js';
 import { indexAction } from './commands/index-cmd.js';
 import { scaffoldAction } from './commands/scaffold.js';
+import { navBuildAction } from './commands/nav.js';
+import { i18nStatusAction } from './commands/i18n.js';
 
 export function buildProgram(): Command {
   const program = new Command();
@@ -40,6 +42,18 @@ export function buildProgram(): Command {
     .option('-t, --title <title>', 'topic title')
     .option('-o, --out <path>', 'write to a file instead of stdout')
     .action(scaffoldAction);
+
+  const nav = program.command('nav').description('navigation manifests');
+  withCommon(nav.command('build'))
+    .description('generate base + per-profile nav manifests and profiles.json')
+    .option('--nav-dir <dir>', 'directory of nav/*.yaml sources (defaults to <root>/nav)')
+    .option('-o, --out <dir>', 'output directory (defaults to <root>/build/nav)')
+    .action(navBuildAction);
+
+  const i18n = program.command('i18n').description('internationalization');
+  withCommon(i18n.command('status'))
+    .description('report locale coverage and stale translations (exit 1 if stale)')
+    .action(i18nStatusAction);
 
   return program;
 }
