@@ -1,15 +1,14 @@
 ---
 id: 1
 title: 'Monorepo scaffold: pnpm, tsconfig, vitest'
-status: in-progress
+status: done
 priority: high
 created: 2026-06-28T12:54:59.4228667+02:00
-updated: 2026-06-28T13:52:51.988488661+02:00
+updated: 2026-06-28T13:53:43.253736881+02:00
 started: 2026-06-28T13:35:44.091206495+02:00
+completed: 2026-06-28T13:53:43.254551064+02:00
 tags:
     - foundation
-claimed_by: kelp-hail
-claimed_at: 2026-06-28T13:52:51.988588486+02:00
 class: standard
 ---
 
