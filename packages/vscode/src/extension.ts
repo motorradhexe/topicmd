@@ -1,14 +1,16 @@
 /**
  * topicmd VS Code extension entry. Contributes a "Topic Health" tree view that
  * reads `docs.index.json` from the workspace and renders orphans, missing
- * fields, coverage gaps, and stale translations. All derivation is delegated to
- * the pure `collectHealth` (health.ts); this file is only VS Code glue.
+ * fields, coverage gaps, and stale translations (#10), plus schema-driven
+ * frontmatter completion and diagnostics (#11). All logic lives in the pure
+ * health.ts/frontmatter.ts helpers; this file is only VS Code glue.
  */
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import * as vscode from 'vscode';
-import type { DocsIndex } from '@topicmd/core';
+import { loadSchema, type DocsIndex } from '@topicmd/core';
 import { collectHealth, type HealthCategory, type HealthEntry } from './health.js';
+import { registerFrontmatterIntelligence } from './intelligence.js';
 
 type TreeNode =
   | { kind: 'category'; category: HealthCategory }
@@ -88,6 +90,20 @@ export function activate(context: vscode.ExtensionContext): void {
   watcher.onDidCreate(() => provider.refresh());
   watcher.onDidDelete(() => provider.refresh());
   context.subscriptions.push(watcher);
+
+  // Frontmatter intelligence (#11): completion + diagnostics, when a schema exists.
+  if (workspaceRoot) {
+    const schemaPath = join(workspaceRoot, 'docs.schema.yaml');
+    if (existsSync(schemaPath)) {
+      try {
+        registerFrontmatterIntelligence(context, loadSchema(schemaPath));
+      } catch {
+        void vscode.window.showWarningMessage(
+          'topicmd: could not load docs.schema.yaml; frontmatter intelligence disabled.',
+        );
+      }
+    }
+  }
 }
 
 export function deactivate(): void {
