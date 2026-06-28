@@ -1,0 +1,7 @@
+{
+  "name": "@topicmd/vscode",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "description": "TODO placeholder — the VSCode extension is scaffolded in task #10 (Topic Health Panel). The full vsce/esbuild toolchain is intentionally not set up yet."
+}

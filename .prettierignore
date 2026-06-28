@@ -1,0 +1,9 @@
+**/dist/**
+**/node_modules/**
+pnpm-lock.yaml
+docs.index.json
+
+# Board + spec are managed outside the code toolchain
+CLAUDE.md
+kanban/
+.claude/
