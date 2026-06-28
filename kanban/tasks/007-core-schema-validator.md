@@ -1,10 +1,12 @@
 ---
 id: 7
 title: 'Core: Schema Validator'
-status: backlog
+status: done
 priority: high
 created: 2026-06-28T12:55:00.6814107+02:00
-updated: 2026-06-28T13:48:23.38558373+02:00
+updated: 2026-06-28T15:35:42.176229841+02:00
+started: 2026-06-28T15:33:10.429952586+02:00
+completed: 2026-06-28T15:35:42.176939852+02:00
 tags:
     - core
 depends_on:
