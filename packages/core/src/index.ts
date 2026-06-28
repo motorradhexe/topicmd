@@ -9,12 +9,7 @@ export const VERSION = '0.0.0';
 
 export { validateTopic, validateTopics } from './validator/index.js';
 
-export {
-  buildIndex,
-  indexProject,
-  serializeIndex,
-  loadVariables,
-} from './indexer/index.js';
+export { buildIndex, indexProject, serializeIndex } from './indexer/index.js';
 export type {
   DocsIndex,
   IndexedTopic,
@@ -45,6 +40,12 @@ export type {
   FragmentResolution,
   FragmentResolverOptions,
 } from './fragments/index.js';
+
+export { loadVariables, resolveVariables } from './variables/index.js';
+export type {
+  VariableResolution,
+  ResolveVariablesOptions,
+} from './variables/index.js';
 
 export type {
   FormatConfig,
