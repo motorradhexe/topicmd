@@ -11,3 +11,23 @@
 {"timestamp":"2026-06-28T12:55:01.4666465+02:00","action":"create","task_id":11,"detail":"VSCode Extension: Frontmatter Intelligence"}
 {"timestamp":"2026-06-28T12:55:01.6692694+02:00","action":"create","task_id":12,"detail":"VSCode Extension: Quick Scaffold"}
 {"timestamp":"2026-06-28T12:55:01.8627363+02:00","action":"create","task_id":13,"detail":"GitHub Pages via GitHub Actions: Projektdokumentation aufsetzen"}
+{"timestamp":"2026-06-28T13:35:44.091384095+02:00","action":"claim","task_id":1,"detail":"kelp-hail"}
+{"timestamp":"2026-06-28T13:35:44.093619295+02:00","action":"move","task_id":1,"detail":"backlog -\u003e in-progress"}
+{"timestamp":"2026-06-28T13:47:31.610556674+02:00","action":"create","task_id":14,"detail":"Core: Variablen-Auflösung (docs.vars.yaml, {{vars.*}})"}
+{"timestamp":"2026-06-28T13:47:32.010759691+02:00","action":"create","task_id":15,"detail":"Core: Profile-Resolution + Nav-Builder (Manifeste + profiles.json)"}
+{"timestamp":"2026-06-28T13:47:32.36000874+02:00","action":"create","task_id":16,"detail":"Core: i18n-Coverage + Stale-Translation-Tracking"}
+{"timestamp":"2026-06-28T13:47:32.682983982+02:00","action":"create","task_id":17,"detail":"CLI: nav build + i18n status"}
+{"timestamp":"2026-06-28T13:47:33.033749887+02:00","action":"create","task_id":18,"detail":"CI: GitHub Actions — typecheck, lint, test, validate auf PR"}
+{"timestamp":"2026-06-28T13:48:21.727099765+02:00","action":"edit","task_id":1,"detail":"Monorepo scaffold: pnpm, tsconfig, vitest"}
+{"timestamp":"2026-06-28T13:48:21.980438436+02:00","action":"edit","task_id":2,"detail":"Core: TypeScript-Typdefinitionen (Topic, DocsSchema, ValidationResult)"}
+{"timestamp":"2026-06-28T13:48:22.291823182+02:00","action":"edit","task_id":3,"detail":"examples/basic/ Fixtures anlegen"}
+{"timestamp":"2026-06-28T13:48:22.57969479+02:00","action":"edit","task_id":4,"detail":"Core: Schema Loader (Zod)"}
+{"timestamp":"2026-06-28T13:48:22.849191817+02:00","action":"edit","task_id":5,"detail":"Core: Topic Parser (remark + gray-matter)"}
+{"timestamp":"2026-06-28T13:48:23.106300829+02:00","action":"edit","task_id":6,"detail":"Core: Fragment Resolver"}
+{"timestamp":"2026-06-28T13:48:23.386050404+02:00","action":"edit","task_id":7,"detail":"Core: Schema Validator"}
+{"timestamp":"2026-06-28T13:48:23.67648217+02:00","action":"edit","task_id":8,"detail":"Core: Indexer → docs.index.json"}
+{"timestamp":"2026-06-28T13:48:23.944046314+02:00","action":"edit","task_id":9,"detail":"CLI: scaffold + validate + index"}
+{"timestamp":"2026-06-28T13:48:24.22209089+02:00","action":"edit","task_id":10,"detail":"VSCode Extension: Topic Health Panel"}
+{"timestamp":"2026-06-28T13:48:24.547789292+02:00","action":"edit","task_id":11,"detail":"VSCode Extension: Frontmatter Intelligence"}
+{"timestamp":"2026-06-28T13:48:24.817951911+02:00","action":"edit","task_id":12,"detail":"VSCode Extension: Quick Scaffold"}
+{"timestamp":"2026-06-28T13:48:25.086830646+02:00","action":"edit","task_id":13,"detail":"GitHub Pages via GitHub Actions: Projektdokumentation aufsetzen"}
