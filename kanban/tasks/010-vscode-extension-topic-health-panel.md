@@ -1,10 +1,12 @@
 ---
 id: 10
 title: 'VSCode Extension: Topic Health Panel'
-status: backlog
+status: done
 priority: low
 created: 2026-06-28T12:55:01.2498363+02:00
-updated: 2026-06-28T13:48:24.221697182+02:00
+updated: 2026-06-28T17:21:35.199842393+02:00
+started: 2026-06-28T17:13:22.788353418+02:00
+completed: 2026-06-28T17:21:35.200784982+02:00
 tags:
     - vscode
 depends_on:
