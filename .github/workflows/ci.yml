@@ -13,6 +13,8 @@ jobs:
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -20,10 +22,16 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        # --ignore-scripts: skip dependency build scripts (esbuild's postinstall).
-        # pnpm errors (ERR_PNPM_IGNORED_BUILDS) on unapproved builds; CI doesn't
-        # need them — vitest/esbuild work via the @esbuild/* binary packages.
-        run: pnpm install --frozen-lockfile --ignore-scripts
+        shell: bash
+        run: |
+          echo "pnpm $(pnpm --version) on node $(node --version)"
+          set +e
+          pnpm install --frozen-lockfile --ignore-scripts 2>&1 | tee /tmp/install.log
+          code=${PIPESTATUS[0]}
+          if [ "$code" -ne 0 ]; then
+            echo "::error::install failed (exit $code) pnpm=$(pnpm --version): $(tail -c 1500 /tmp/install.log | tr '\n' ' ')"
+          fi
+          exit "$code"
 
       - name: Typecheck (and build)
         run: pnpm typecheck
