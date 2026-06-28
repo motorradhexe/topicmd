@@ -26,6 +26,9 @@ export type {
 
 export { loadSchema, parseSchema, SchemaError, docsSchemaZod } from './schema/index.js';
 
+export { scaffoldTopic } from './scaffold/index.js';
+export type { ScaffoldTopicOptions } from './scaffold/index.js';
+
 export { buildI18nReport } from './i18n/index.js';
 export type { I18nReport, I18nOptions } from './i18n/index.js';
 
