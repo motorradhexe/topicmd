@@ -1,10 +1,12 @@
 ---
 id: 11
 title: 'VSCode Extension: Frontmatter Intelligence'
-status: backlog
+status: done
 priority: low
 created: 2026-06-28T12:55:01.4617152+02:00
-updated: 2026-06-28T13:48:24.547453426+02:00
+updated: 2026-06-28T17:25:38.426418002+02:00
+started: 2026-06-28T17:21:45.320501885+02:00
+completed: 2026-06-28T17:25:38.427244577+02:00
 tags:
     - vscode
 depends_on:

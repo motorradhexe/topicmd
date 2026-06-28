@@ -111,3 +111,8 @@
 {"timestamp":"2026-06-28T17:21:34.902176942+02:00","action":"edit","task_id":10,"detail":"VSCode Extension: Topic Health Panel"}
 {"timestamp":"2026-06-28T17:21:34.902408328+02:00","action":"release","task_id":10,"detail":"lake-solar"}
 {"timestamp":"2026-06-28T17:21:35.200965508+02:00","action":"move","task_id":10,"detail":"in-progress -\u003e done"}
+{"timestamp":"2026-06-28T17:21:45.320755511+02:00","action":"claim","task_id":11,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T17:21:45.320892447+02:00","action":"move","task_id":11,"detail":"backlog -\u003e in-progress"}
+{"timestamp":"2026-06-28T17:25:38.135464117+02:00","action":"edit","task_id":11,"detail":"VSCode Extension: Frontmatter Intelligence"}
+{"timestamp":"2026-06-28T17:25:38.135637496+02:00","action":"release","task_id":11,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T17:25:38.427394222+02:00","action":"move","task_id":11,"detail":"in-progress -\u003e done"}
