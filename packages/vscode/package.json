@@ -1,7 +1,39 @@
 {
   "name": "@topicmd/vscode",
+  "displayName": "topicmd",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
-  "description": "TODO placeholder — the VSCode extension is scaffolded in task #10 (Topic Health Panel). The full vsce/esbuild toolchain is intentionally not set up yet."
+  "description": "topicmd VS Code extension: a Topic Health panel backed by docs.index.json.",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "main": "./dist/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "topicmdHealth",
+          "name": "Topic Health"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "topicmd.refreshHealth",
+        "title": "topicmd: Refresh Topic Health"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "esbuild src/extension.ts --bundle --platform=node --format=cjs --external:vscode --outfile=dist/extension.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@topicmd/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.90.0",
+    "esbuild": "^0.24.0"
+  }
 }
