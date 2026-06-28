@@ -116,3 +116,8 @@
 {"timestamp":"2026-06-28T17:25:38.135464117+02:00","action":"edit","task_id":11,"detail":"VSCode Extension: Frontmatter Intelligence"}
 {"timestamp":"2026-06-28T17:25:38.135637496+02:00","action":"release","task_id":11,"detail":"lake-solar"}
 {"timestamp":"2026-06-28T17:25:38.427394222+02:00","action":"move","task_id":11,"detail":"in-progress -\u003e done"}
+{"timestamp":"2026-06-28T17:25:50.40809971+02:00","action":"claim","task_id":12,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T17:25:50.408215692+02:00","action":"move","task_id":12,"detail":"backlog -\u003e in-progress"}
+{"timestamp":"2026-06-28T17:29:40.578660258+02:00","action":"edit","task_id":12,"detail":"VSCode Extension: Quick Scaffold"}
+{"timestamp":"2026-06-28T17:29:40.578857178+02:00","action":"release","task_id":12,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T17:29:40.859621088+02:00","action":"move","task_id":12,"detail":"in-progress -\u003e done"}

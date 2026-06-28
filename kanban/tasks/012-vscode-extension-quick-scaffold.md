@@ -1,10 +1,12 @@
 ---
 id: 12
 title: 'VSCode Extension: Quick Scaffold'
-status: backlog
+status: done
 priority: low
 created: 2026-06-28T12:55:01.6643748+02:00
-updated: 2026-06-28T13:48:24.817561411+02:00
+updated: 2026-06-28T17:29:40.858528938+02:00
+started: 2026-06-28T17:25:50.407874569+02:00
+completed: 2026-06-28T17:29:40.859400678+02:00
 tags:
     - vscode
 depends_on:
