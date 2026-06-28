@@ -80,14 +80,15 @@ describe('indexProject (basic example fixture)', () => {
     ]);
   });
 
-  it('includes the variables map and leaves i18n fields to #16', () => {
+  it('includes the variables map and i18n coverage (#16)', () => {
     expect(index.variables).toEqual({
       company: 'Acme Corp',
       product_name: 'Alpha',
       support_email: 'support@example.com',
     });
-    expect(index.i18n_coverage).toEqual({});
-    expect(index.stale_translations).toEqual([]);
+    // indexProject now enriches with the i18n report (#16).
+    expect(index.i18n_coverage).toEqual({ de: '25%', fr: '0%' });
+    expect(Array.isArray(index.stale_translations)).toBe(true);
     expect(index.terms).toEqual([]);
   });
 
