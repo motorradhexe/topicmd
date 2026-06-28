@@ -1,0 +1,49 @@
+# topicmd basic example — content model.
+# Used as the canonical test fixture for all core modules.
+format:
+  primary: markdown
+  extensions: [] # markdown-only; mdx not enabled in the basic example
+
+fragments:
+  path: fragments/
+
+dimensions:
+  - id: product
+    label: Product
+    values: [alpha, beta]
+  - id: audience
+    label: Role
+    values: [developer, admin]
+  - id: level
+    label: Experience
+    values: [beginner, advanced]
+
+profiles:
+  - id: dev-beginner
+    label: "Developer – Getting Started"
+    filters:
+      product: alpha
+      audience: developer
+      level: beginner
+  - id: admin-all
+    label: "Admin (all levels)"
+    filters:
+      audience: admin # partial: all products, all levels
+
+topic_types:
+  concept:
+    required: [title, description, topic_type]
+    optional: [dimensions, related, tags]
+  task:
+    required: [title, topic_type]
+    optional: [dimensions, tags]
+    contract:
+      must_contain: steps
+  reference:
+    required: [title, topic_type, version]
+    optional: [dimensions, tags]
+
+i18n:
+  default: en
+  locales: [de, fr]
+  strategy: suffix

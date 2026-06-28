@@ -1,0 +1,9 @@
+title: Alpha Documentation
+sections:
+  - Getting Started:
+      - ./docs/concepts/what-is-alpha.md
+      - ./docs/tasks/quickstart.md
+  - Guides:
+      - ./docs/tasks/authentication.md
+  - Reference:
+      - ./docs/reference/api.md
