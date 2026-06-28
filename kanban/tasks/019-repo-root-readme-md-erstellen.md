@@ -1,10 +1,12 @@
 ---
 id: 19
 title: Repo-Root README.md erstellen
-status: backlog
+status: done
 priority: medium
 created: 2026-06-28T16:47:53.695464727+02:00
-updated: 2026-06-28T16:47:53.695464727+02:00
+updated: 2026-06-28T17:09:00.317897633+02:00
+started: 2026-06-28T17:07:06.506475616+02:00
+completed: 2026-06-28T17:09:00.319256441+02:00
 tags:
     - docs
 class: standard
