@@ -80,6 +80,20 @@ $CLI i18n status --schema $ROOT/docs.schema.yaml --root $ROOT --content $ROOT/do
 Common options: `--schema <path>` (default `docs.schema.yaml`), `--root <dir>`
 (defaults to the schema directory), `--content <dir>` (defaults to root).
 
+## VS Code extension
+
+`packages/vscode` provides editor integration over the same core:
+
+- **Topic Health panel** (Explorer view) — surfaces orphans, missing fields,
+  coverage gaps, and stale translations by reading `docs.index.json`.
+- **Frontmatter intelligence** — completion for `topic_type` and dimension
+  values from the schema, plus inline diagnostics for invalid dimensions and
+  missing required fields.
+- **Quick Scaffold** — the `topicmd: New Topic…` command creates a new topic
+  with schema-valid frontmatter (same logic as `topicmd scaffold`).
+
+Build the extension bundle with `pnpm --filter @topicmd/vscode build`.
+
 ## Project layout
 
 This is a pnpm monorepo:

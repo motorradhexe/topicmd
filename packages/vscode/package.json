@@ -22,6 +22,10 @@
       {
         "command": "topicmd.refreshHealth",
         "title": "topicmd: Refresh Topic Health"
+      },
+      {
+        "command": "topicmd.scaffoldTopic",
+        "title": "topicmd: New Topic…"
       }
     ]
   },

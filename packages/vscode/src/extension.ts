@@ -2,8 +2,8 @@
  * topicmd VS Code extension entry. Contributes a "Topic Health" tree view that
  * reads `docs.index.json` from the workspace and renders orphans, missing
  * fields, coverage gaps, and stale translations (#10), plus schema-driven
- * frontmatter completion and diagnostics (#11). All logic lives in the pure
- * health.ts/frontmatter.ts helpers; this file is only VS Code glue.
+ * frontmatter completion and diagnostics (#11), and a Quick Scaffold command
+ * (#12). All logic lives in the pure helpers / core; this file is only glue.
  */
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -11,6 +11,7 @@ import * as vscode from 'vscode';
 import { loadSchema, type DocsIndex } from '@topicmd/core';
 import { collectHealth, type HealthCategory, type HealthEntry } from './health.js';
 import { registerFrontmatterIntelligence } from './intelligence.js';
+import { registerScaffoldCommand } from './scaffoldCommand.js';
 
 type TreeNode =
   | { kind: 'category'; category: HealthCategory }
@@ -90,6 +91,9 @@ export function activate(context: vscode.ExtensionContext): void {
   watcher.onDidCreate(() => provider.refresh());
   watcher.onDidDelete(() => provider.refresh());
   context.subscriptions.push(watcher);
+
+  // Quick Scaffold (#12): create a new topic from a topic type.
+  registerScaffoldCommand(context, workspaceRoot);
 
   // Frontmatter intelligence (#11): completion + diagnostics, when a schema exists.
   if (workspaceRoot) {
