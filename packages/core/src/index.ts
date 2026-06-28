@@ -26,6 +26,27 @@ export type {
 
 export { loadSchema, parseSchema, SchemaError, docsSchemaZod } from './schema/index.js';
 
+export {
+  matchesFilters,
+  parseNavManifest,
+  loadNavManifest,
+  navManifestToObject,
+  isTopicNode,
+  filterNav,
+  generateProfileNavs,
+  buildProfilesManifest,
+  serializeProfiles,
+  serializeNavManifest,
+} from './nav/index.js';
+export type {
+  NavManifest,
+  NavNode,
+  NavTopicNode,
+  NavSectionNode,
+  ProfilesManifest,
+  ProfileEntry,
+} from './nav/index.js';
+
 export { parseTopic, parseTopicFile, deriveIdentity } from './parser/index.js';
 export type {
   ParsedTopic,
