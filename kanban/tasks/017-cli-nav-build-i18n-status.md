@@ -1,10 +1,12 @@
 ---
 id: 17
 title: 'CLI: nav build + i18n status'
-status: backlog
+status: done
 priority: high
 created: 2026-06-28T13:47:32.681904104+02:00
-updated: 2026-06-28T13:47:32.681904104+02:00
+updated: 2026-06-28T17:04:11.437545637+02:00
+started: 2026-06-28T16:59:35.799376517+02:00
+completed: 2026-06-28T17:04:11.43863842+02:00
 tags:
     - cli
 depends_on:

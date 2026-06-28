@@ -91,3 +91,8 @@
 {"timestamp":"2026-06-28T16:59:28.120194054+02:00","action":"edit","task_id":16,"detail":"Core: i18n-Coverage + Stale-Translation-Tracking"}
 {"timestamp":"2026-06-28T16:59:28.1204456+02:00","action":"release","task_id":16,"detail":"lake-solar"}
 {"timestamp":"2026-06-28T16:59:28.396669413+02:00","action":"move","task_id":16,"detail":"in-progress -\u003e done"}
+{"timestamp":"2026-06-28T16:59:35.79964847+02:00","action":"claim","task_id":17,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T16:59:35.799816772+02:00","action":"move","task_id":17,"detail":"backlog -\u003e in-progress"}
+{"timestamp":"2026-06-28T17:04:11.154020567+02:00","action":"edit","task_id":17,"detail":"CLI: nav build + i18n status"}
+{"timestamp":"2026-06-28T17:04:11.154113213+02:00","action":"release","task_id":17,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T17:04:11.438854686+02:00","action":"move","task_id":17,"detail":"in-progress -\u003e done"}
