@@ -96,3 +96,8 @@
 {"timestamp":"2026-06-28T17:04:11.154020567+02:00","action":"edit","task_id":17,"detail":"CLI: nav build + i18n status"}
 {"timestamp":"2026-06-28T17:04:11.154113213+02:00","action":"release","task_id":17,"detail":"lake-solar"}
 {"timestamp":"2026-06-28T17:04:11.438854686+02:00","action":"move","task_id":17,"detail":"in-progress -\u003e done"}
+{"timestamp":"2026-06-28T17:04:35.099014721+02:00","action":"claim","task_id":18,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T17:04:35.099215592+02:00","action":"move","task_id":18,"detail":"backlog -\u003e in-progress"}
+{"timestamp":"2026-06-28T17:06:56.202572388+02:00","action":"edit","task_id":18,"detail":"CI: GitHub Actions — typecheck, lint, test, validate auf PR"}
+{"timestamp":"2026-06-28T17:06:56.202841437+02:00","action":"release","task_id":18,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T17:06:56.653543599+02:00","action":"move","task_id":18,"detail":"in-progress -\u003e done"}
