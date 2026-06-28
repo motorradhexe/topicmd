@@ -20,7 +20,10 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        # --ignore-scripts: skip dependency build scripts (esbuild's postinstall).
+        # pnpm errors (ERR_PNPM_IGNORED_BUILDS) on unapproved builds; CI doesn't
+        # need them — vitest/esbuild work via the @esbuild/* binary packages.
+        run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: Typecheck (and build)
         run: pnpm typecheck
