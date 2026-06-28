@@ -55,3 +55,8 @@
 {"timestamp":"2026-06-28T15:30:02.33412489+02:00","action":"edit","task_id":5,"detail":"Core: Topic Parser (remark + gray-matter)"}
 {"timestamp":"2026-06-28T15:30:02.33427742+02:00","action":"release","task_id":5,"detail":"lake-solar"}
 {"timestamp":"2026-06-28T15:30:02.898290315+02:00","action":"move","task_id":5,"detail":"in-progress -\u003e done"}
+{"timestamp":"2026-06-28T15:30:12.319354244+02:00","action":"claim","task_id":6,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T15:30:12.319526115+02:00","action":"move","task_id":6,"detail":"backlog -\u003e in-progress"}
+{"timestamp":"2026-06-28T15:33:00.083024064+02:00","action":"edit","task_id":6,"detail":"Core: Fragment Resolver"}
+{"timestamp":"2026-06-28T15:33:00.083207485+02:00","action":"release","task_id":6,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T15:33:00.503608801+02:00","action":"move","task_id":6,"detail":"in-progress -\u003e done"}
