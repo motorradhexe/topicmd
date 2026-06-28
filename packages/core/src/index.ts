@@ -1,9 +1,9 @@
 /**
  * @topicmd/core — public entry.
  *
- * Exposes the declarative type surface (#2), the schema loader (#4), and the
- * topic parser (#5). Further runtime exports land in later tasks: fragment
- * resolver (#6), validator (#7), indexer (#8), etc.
+ * Exposes the declarative type surface (#2), the schema loader (#4), the topic
+ * parser (#5), and the fragment resolver (#6). Further runtime exports land in
+ * later tasks: validator (#7), indexer (#8), etc.
  */
 export const VERSION = '0.0.0';
 
@@ -17,6 +17,12 @@ export type {
   IncludeDirective,
   TopicParserOptions,
 } from './parser/index.js';
+
+export { resolveFragments, resolveFragmentsInFile } from './fragments/index.js';
+export type {
+  FragmentResolution,
+  FragmentResolverOptions,
+} from './fragments/index.js';
 
 export type {
   FormatConfig,
