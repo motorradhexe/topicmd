@@ -1,0 +1,13 @@
+{"timestamp":"2026-06-28T12:54:59.4844469+02:00","action":"create","task_id":1,"detail":"Monorepo scaffold: pnpm, tsconfig, vitest"}
+{"timestamp":"2026-06-28T12:54:59.6592787+02:00","action":"create","task_id":2,"detail":"Core: TypeScript-Typdefinitionen (Topic, DocsSchema, ValidationResult)"}
+{"timestamp":"2026-06-28T12:54:59.8803137+02:00","action":"create","task_id":3,"detail":"examples/basic/ Fixtures anlegen"}
+{"timestamp":"2026-06-28T12:55:00.1064532+02:00","action":"create","task_id":4,"detail":"Core: Schema Loader (Zod)"}
+{"timestamp":"2026-06-28T12:55:00.3028985+02:00","action":"create","task_id":5,"detail":"Core: Topic Parser (remark + gray-matter)"}
+{"timestamp":"2026-06-28T12:55:00.4999185+02:00","action":"create","task_id":6,"detail":"Core: Fragment Resolver"}
+{"timestamp":"2026-06-28T12:55:00.6849737+02:00","action":"create","task_id":7,"detail":"Core: Schema Validator"}
+{"timestamp":"2026-06-28T12:55:00.8765509+02:00","action":"create","task_id":8,"detail":"Core: Indexer → docs.index.json"}
+{"timestamp":"2026-06-28T12:55:01.0665814+02:00","action":"create","task_id":9,"detail":"CLI: scaffold + validate + index"}
+{"timestamp":"2026-06-28T12:55:01.2531721+02:00","action":"create","task_id":10,"detail":"VSCode Extension: Topic Health Panel"}
+{"timestamp":"2026-06-28T12:55:01.4666465+02:00","action":"create","task_id":11,"detail":"VSCode Extension: Frontmatter Intelligence"}
+{"timestamp":"2026-06-28T12:55:01.6692694+02:00","action":"create","task_id":12,"detail":"VSCode Extension: Quick Scaffold"}
+{"timestamp":"2026-06-28T12:55:01.8627363+02:00","action":"create","task_id":13,"detail":"GitHub Pages via GitHub Actions: Projektdokumentation aufsetzen"}
