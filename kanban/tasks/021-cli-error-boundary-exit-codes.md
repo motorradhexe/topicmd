@@ -1,10 +1,12 @@
 ---
 id: 21
 title: 'CLI: zentrale Fehlergrenze + konsistente Exit-Codes'
-status: todo
+status: done
 priority: medium
 created: 2026-06-28T18:30:00+02:00
-updated: 2026-06-28T18:30:00+02:00
+updated: 2026-06-28T19:55:00+02:00
+started: 2026-06-28T19:51:00+02:00
+completed: 2026-06-28T19:55:00+02:00
 tags:
     - cli
 depends_on:

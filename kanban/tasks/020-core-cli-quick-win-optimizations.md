@@ -1,10 +1,12 @@
 ---
 id: 20
 title: 'Core/CLI: Quick-Win-Optimierungen (Dedup, engines, Regex, Map)'
-status: todo
+status: done
 priority: medium
 created: 2026-06-28T18:30:00+02:00
-updated: 2026-06-28T18:30:00+02:00
+updated: 2026-06-28T19:50:00+02:00
+started: 2026-06-28T18:45:00+02:00
+completed: 2026-06-28T19:50:00+02:00
 tags:
     - core
     - cli
