@@ -27,6 +27,12 @@ describe('indexProject (basic example fixture)', () => {
     expect(index.topics).toHaveLength(5);
   });
 
+  it('excludes the fragments dir from topics even when scanning the root', () => {
+    const rootIndex = indexProject({ rootDir: basicRoot, schema, contentDir: basicRoot });
+    const ids = rootIndex.topics.map((t) => t.id);
+    expect(ids).not.toContain('fragments/prerequisites-admin');
+  });
+
   it('lists fragments and records usage by topic id', () => {
     expect(index.fragments.map((f) => f.id)).toEqual([
       'fragments/prerequisites-admin.md',
