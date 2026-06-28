@@ -4,9 +4,11 @@
  *
  * The indexer (#8) fills topics, fragments, relationships, coverage, terms, and
  * variables. The `i18n_coverage` and `stale_translations` fields are populated
- * separately by the i18n tracker (#16); the indexer leaves them at their empty
- * defaults so the shape is always complete.
+ * separately by the i18n tracker (#16), and `diagnostics` by validation, when
+ * the index is built from disk (`indexProject`); the indexer leaves them at
+ * their empty defaults so the shape is always complete.
  */
+import type { Diagnostic } from '../types/index.js';
 
 export interface IndexedTopic {
   id: string;
@@ -77,4 +79,10 @@ export interface DocsIndex {
   /** Glossary terms; no term source is modelled yet, so currently empty. */
   terms: string[];
   variables: Record<string, unknown>;
+  /**
+   * Validation findings, filled by `indexProject` (which already parses every
+   * topic). Empty for the pure `buildIndex`. Lets tooling (e.g. the VS Code
+   * health panel, #10) surface missing fields without re-parsing.
+   */
+  diagnostics: Diagnostic[];
 }

@@ -92,6 +92,13 @@ describe('indexProject (basic example fixture)', () => {
     expect(index.terms).toEqual([]);
   });
 
+  it('fills diagnostics from validation (empty for the clean docs/ set)', () => {
+    expect(index.diagnostics).toEqual([]);
+    // Scanning the root pulls in invalid/ fixtures → validation findings appear.
+    const rootIndex = indexProject({ rootDir: basicRoot, schema, contentDir: basicRoot });
+    expect(rootIndex.diagnostics.some((d) => d.code === 'missing-required-field')).toBe(true);
+  });
+
   it('serializes deterministically (stable across builds)', () => {
     expect(serializeIndex(index)).toBe(serializeIndex(buildFixtureIndex()));
     expect(serializeIndex(index).endsWith('\n')).toBe(true);
