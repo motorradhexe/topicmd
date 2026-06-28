@@ -1,11 +1,13 @@
 /**
  * @topicmd/core — public entry.
  *
- * Currently exposes the declarative type surface (#2). Runtime exports land in
- * later tasks: schema loader (#4), topic parser (#5), fragment resolver (#6),
- * validator (#7), indexer (#8), etc.
+ * Exposes the declarative type surface (#2) and the schema loader (#4). Further
+ * runtime exports land in later tasks: topic parser (#5), fragment resolver
+ * (#6), validator (#7), indexer (#8), etc.
  */
 export const VERSION = '0.0.0';
+
+export { loadSchema, parseSchema, SchemaError, docsSchemaZod } from './schema/index.js';
 
 export type {
   FormatConfig,

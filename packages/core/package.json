@@ -16,5 +16,9 @@
   ],
   "scripts": {
     "build": "tsc -b"
+  },
+  "dependencies": {
+    "js-yaml": "^5.2.0",
+    "zod": "^4.4.3"
   }
 }
