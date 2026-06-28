@@ -12,6 +12,10 @@ import { loadSchema, type DocsIndex } from '@topicmd/core';
 import { collectHealth, type HealthCategory, type HealthEntry } from './health.js';
 import { registerFrontmatterIntelligence } from './intelligence.js';
 import { registerScaffoldCommand } from './scaffoldCommand.js';
+import { debounce } from './debounce.js';
+
+/** Coalesce window for rapid index rewrites (e.g. a watch build). */
+const INDEX_REFRESH_DEBOUNCE_MS = 1000;
 
 type TreeNode =
   | { kind: 'category'; category: HealthCategory }
@@ -85,12 +89,14 @@ export function activate(context: vscode.ExtensionContext): void {
     vscode.commands.registerCommand('topicmd.refreshHealth', () => provider.refresh()),
   );
 
-  // Auto-refresh when the index changes.
+  // Auto-refresh when the index changes, coalescing bursts (a build may rewrite
+  // docs.index.json several times in quick succession).
+  const refreshHealth = debounce(() => provider.refresh(), INDEX_REFRESH_DEBOUNCE_MS);
   const watcher = vscode.workspace.createFileSystemWatcher(`**/${INDEX_FILE}`);
-  watcher.onDidChange(() => provider.refresh());
-  watcher.onDidCreate(() => provider.refresh());
-  watcher.onDidDelete(() => provider.refresh());
-  context.subscriptions.push(watcher);
+  watcher.onDidChange(() => refreshHealth.run());
+  watcher.onDidCreate(() => refreshHealth.run());
+  watcher.onDidDelete(() => refreshHealth.run());
+  context.subscriptions.push(watcher, { dispose: () => refreshHealth.cancel() });
 
   // Quick Scaffold (#12): create a new topic from a topic type.
   registerScaffoldCommand(context, workspaceRoot);
