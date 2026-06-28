@@ -1,10 +1,12 @@
 ---
 id: 5
 title: 'Core: Topic Parser (remark + gray-matter)'
-status: backlog
+status: done
 priority: high
 created: 2026-06-28T12:55:00.3001179+02:00
-updated: 2026-06-28T13:48:22.848826342+02:00
+updated: 2026-06-28T15:30:02.896422195+02:00
+started: 2026-06-28T15:26:44.249659955+02:00
+completed: 2026-06-28T15:30:02.897990298+02:00
 tags:
     - core
 depends_on:

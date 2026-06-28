@@ -50,3 +50,8 @@
 {"timestamp":"2026-06-28T15:26:35.926623958+02:00","action":"edit","task_id":4,"detail":"Core: Schema Loader (Zod)"}
 {"timestamp":"2026-06-28T15:26:35.926965322+02:00","action":"release","task_id":4,"detail":"lake-solar"}
 {"timestamp":"2026-06-28T15:26:36.440256247+02:00","action":"move","task_id":4,"detail":"in-progress -\u003e done"}
+{"timestamp":"2026-06-28T15:26:44.250025879+02:00","action":"claim","task_id":5,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T15:26:44.250255315+02:00","action":"move","task_id":5,"detail":"backlog -\u003e in-progress"}
+{"timestamp":"2026-06-28T15:30:02.33412489+02:00","action":"edit","task_id":5,"detail":"Core: Topic Parser (remark + gray-matter)"}
+{"timestamp":"2026-06-28T15:30:02.33427742+02:00","action":"release","task_id":5,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T15:30:02.898290315+02:00","action":"move","task_id":5,"detail":"in-progress -\u003e done"}
