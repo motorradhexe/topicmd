@@ -121,3 +121,8 @@
 {"timestamp":"2026-06-28T17:29:40.578660258+02:00","action":"edit","task_id":12,"detail":"VSCode Extension: Quick Scaffold"}
 {"timestamp":"2026-06-28T17:29:40.578857178+02:00","action":"release","task_id":12,"detail":"lake-solar"}
 {"timestamp":"2026-06-28T17:29:40.859621088+02:00","action":"move","task_id":12,"detail":"in-progress -\u003e done"}
+{"timestamp":"2026-06-28T17:29:49.131805681+02:00","action":"claim","task_id":13,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T17:29:49.132011421+02:00","action":"move","task_id":13,"detail":"backlog -\u003e in-progress"}
+{"timestamp":"2026-06-28T17:32:58.833570171+02:00","action":"edit","task_id":13,"detail":"GitHub Pages via GitHub Actions: Projektdokumentation aufsetzen"}
+{"timestamp":"2026-06-28T17:32:58.833659122+02:00","action":"release","task_id":13,"detail":"lake-solar"}
+{"timestamp":"2026-06-28T17:32:59.142865401+02:00","action":"move","task_id":13,"detail":"in-progress -\u003e done"}

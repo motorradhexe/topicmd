@@ -1,10 +1,12 @@
 ---
 id: 13
 title: 'GitHub Pages via GitHub Actions: Projektdokumentation aufsetzen'
-status: backlog
+status: done
 priority: low
 created: 2026-06-28T12:55:01.8577722+02:00
-updated: 2026-06-28T13:48:25.086574072+02:00
+updated: 2026-06-28T17:32:59.141898422+02:00
+started: 2026-06-28T17:29:49.131405631+02:00
+completed: 2026-06-28T17:32:59.142698071+02:00
 tags:
     - docs
     - ci
