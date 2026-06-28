@@ -120,6 +120,13 @@ pnpm test        # vitest
 CI runs typecheck, lint, test, and `topicmd validate` against the example on
 every push and pull request.
 
+## Documentation
+
+The project documentation site lives in [`docs-site/`](docs-site/) (static HTML,
+no build step) and is deployed to GitHub Pages by
+[`.github/workflows/pages.yml`](.github/workflows/pages.yml) on changes to
+`docs-site/`. Preview locally by opening `docs-site/index.html` in a browser.
+
 ## License
 
 Released under the MIT License (as declared in each package's `package.json`).
