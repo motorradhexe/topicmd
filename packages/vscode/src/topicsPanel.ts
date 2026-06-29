@@ -289,4 +289,7 @@ const STYLES = `
   .empty, .error { opacity: 0.7; padding: 12px 4px; }
   .error { color: var(--vscode-errorForeground); }
   .path { font-size: 0.75em; opacity: 0.6; }
+  details.gaps { margin: 2px 0 8px; font-size: 0.85em; }
+  details.gaps summary { cursor: pointer; opacity: 0.8; }
+  details.gaps .gap { opacity: 0.8; padding: 2px 0 2px 12px; }
 `;

@@ -55,4 +55,15 @@ describe('buildTopicsModel', () => {
     );
     expect(variant?.stale).toBe(true);
   });
+
+  it('summarises health (orphans, stale, coverage gaps)', () => {
+    expect(model.health.orphans).toBe(model.topics.filter((t) => t.orphan).length);
+    expect(model.health.orphans).toBeGreaterThan(0);
+    expect(model.health.stale).toBe(1);
+    expect(Array.isArray(model.health.gaps)).toBe(true);
+    if (model.health.gaps.length > 0) {
+      expect(model.health.gaps[0]).toHaveProperty('profile');
+      expect(model.health.gaps[0]).toHaveProperty('missing');
+    }
+  });
 });

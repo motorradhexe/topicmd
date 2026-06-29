@@ -82,17 +82,29 @@ Common options: `--schema <path>` (default `docs.schema.yaml`), `--root <dir>`
 
 ## VS Code extension
 
-`packages/vscode` provides editor integration over the same core:
+`packages/vscode` is the primary way to work with a topicmd project. Its
+centerpiece is the **Topics panel**: a flat, faceted view to manage docs **by
+meaning — type, dimensions, profiles, language, tags — instead of by folder
+tree**. From it you can filter and open topics, set dimensions/metadata through
+guided pickers (no hand-edited YAML), create topics and missing translations,
+and see integrated health (orphans, missing fields, stale translations, coverage
+gaps). It also adds schema-driven **frontmatter intelligence** (completion +
+diagnostics) and a **Quick Scaffold** command. See the
+[extension reference](https://motorradhexe.github.io/topicmd/vscode/).
 
-- **Topic Health panel** (Explorer view) — surfaces orphans, missing fields,
-  coverage gaps, and stale translations by reading `docs.index.json`.
-- **Frontmatter intelligence** — completion for `topic_type` and dimension
-  values from the schema, plus inline diagnostics for invalid dimensions and
-  missing required fields.
-- **Quick Scaffold** — the `topicmd: New Topic…` command creates a new topic
-  with schema-valid frontmatter (same logic as `topicmd scaffold`).
+Install the packaged `.vsix` from
+[GitHub Releases](https://github.com/motorradhexe/topicmd/releases)
+(**Extensions → ··· → Install from VSIX…**). Build it locally with
+`pnpm --filter topicmd-vscode build` and package with
+`pnpm --filter topicmd-vscode package`.
 
-Build the extension bundle with `pnpm --filter topicmd-vscode build`.
+### Releasing the extension
+
+The `.vsix` is published by the **Package & release VS Code extension** workflow
+(`.github/workflows/vscode-release.yml`): pushing a `vscode-v*` tag — or running
+the workflow from the Actions tab — builds, packages, and publishes a GitHub
+Release with the `.vsix` attached. Marketplace publishing is intentionally left
+out (it needs a publisher account and a `VSCE_PAT` secret).
 
 ## Project layout
 

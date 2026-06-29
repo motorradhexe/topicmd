@@ -31,6 +31,12 @@ interface Model {
     tags: string[];
   };
   i18n: { coverage: Record<string, string>; staleCount: number };
+  health: {
+    orphans: number;
+    missingFields: number;
+    stale: number;
+    gaps: { profile: string; missing: string }[];
+  };
 }
 
 type HostMessage = { type: 'model'; model: Model } | { type: 'error'; message: string };
@@ -146,6 +152,36 @@ function facetGroup(label: string, group: string, values: { value: string; label
   ]);
 }
 
+function healthBar(): HTMLElement {
+  const h = model!.health;
+  const stat = (label: string, value: number, statusValue: string): HTMLElement =>
+    el(
+      'button',
+      {
+        class: `chip${isActive('status', statusValue) ? ' active' : ''}`,
+        title: `Filter by ${label}`,
+        onclick: () => toggle('status', statusValue),
+      },
+      [`${label}: ${value}`],
+    );
+
+  const children: HTMLElement[] = [
+    el('span', { class: 'facet-label' }, ['Health']),
+    stat('orphans', h.orphans, 'orphan'),
+    stat('missing fields', h.missingFields, 'missingFields'),
+    stat('stale', h.stale, 'stale'),
+  ];
+
+  const bar = el('div', { class: 'facet-group' }, children);
+  if (h.gaps.length === 0) return bar;
+
+  const details = el('details', { class: 'gaps' }, [
+    el('summary', {}, [`Coverage gaps (${h.gaps.length})`]),
+    ...h.gaps.map((g) => el('div', { class: 'gap' }, [`${g.profile}: ${g.missing}`])),
+  ]);
+  return el('div', {}, [bar, details]);
+}
+
 function topicRow(t: TopicCard): HTMLElement {
   const meta: HTMLElement[] = [el('span', { class: 'badge' }, [t.type])];
   meta.push(el('span', { class: 'dim' }, [t.isVariant ? `🌐 ${t.locale} variant` : t.locale]));
@@ -234,6 +270,7 @@ function render(): void {
     ]),
   );
 
+  app.append(healthBar());
   app.append(el('div', { id: 'list' }));
   renderList();
 }

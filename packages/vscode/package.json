@@ -37,10 +37,6 @@
           "id": "topicmdTopics",
           "name": "Topics",
           "type": "webview"
-        },
-        {
-          "id": "topicmdHealth",
-          "name": "Topic Health"
         }
       ]
     },
@@ -53,11 +49,6 @@
       {
         "command": "topicmd.refreshTopics",
         "title": "topicmd: Refresh Topics",
-        "icon": "$(refresh)"
-      },
-      {
-        "command": "topicmd.refreshHealth",
-        "title": "topicmd: Refresh Topic Health",
         "icon": "$(refresh)"
       },
       {
@@ -75,11 +66,6 @@
         {
           "command": "topicmd.refreshTopics",
           "when": "view == topicmdTopics",
-          "group": "navigation"
-        },
-        {
-          "command": "topicmd.refreshHealth",
-          "when": "view == topicmdHealth",
           "group": "navigation"
         }
       ]

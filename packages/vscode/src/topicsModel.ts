@@ -50,10 +50,25 @@ export interface TopicsFacets {
   tags: string[];
 }
 
+/** A profile/topic-type combination that has no matching topic. */
+export interface CoverageGap {
+  profile: string;
+  missing: string;
+}
+
+/** Health summary, folded into the Topics panel (replaces the old Health view). */
+export interface HealthSummary {
+  orphans: number;
+  missingFields: number;
+  stale: number;
+  gaps: CoverageGap[];
+}
+
 export interface TopicsModel {
   topics: TopicCard[];
   facets: TopicsFacets;
   i18n: { coverage: Record<string, string>; staleCount: number };
+  health: HealthSummary;
 }
 
 const MISSING_FIELD_CODES = new Set([
@@ -124,6 +139,12 @@ export function buildTopicsModel(index: DocsIndex, schema: DocsSchema): TopicsMo
     i18n: {
       coverage: index.i18n_coverage,
       staleCount: index.stale_translations.length,
+    },
+    health: {
+      orphans: topics.filter((t) => t.orphan).length,
+      missingFields: topics.filter((t) => t.missingFields).length,
+      stale: topics.filter((t) => t.stale).length,
+      gaps: index.coverage.gaps.map((g) => ({ profile: g.profile, missing: g.missing })),
     },
   };
 }

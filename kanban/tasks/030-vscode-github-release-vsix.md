@@ -28,11 +28,16 @@ Eine installierbare `.vsix` als GitHub-Release bereitstellen.
 ## Depends on
 #28, #29
 
-## Handoff / Blocker (2026-06-29)
-Release-Workflow ist fertig und committet (`vscode-release.yml`: erstellt bei Tag
-`vscode-v*` einen GitHub-Release mit angehängter `.vsix`). **Blocker:** Der Tag
-`vscode-v0.1.0` lässt sich aus der Sandbox nicht pushen — der git-Scope erlaubt nur
-den Feature-Branch (Tag-Push → HTTP 403), und es gibt kein API-Tool zum Anlegen von
-Tags/Releases. Die gebaute `.vsix` (v0.1.0) wurde dem Nutzer direkt übergeben.
-**Zum Auslösen des Releases:** `git push origin vscode-v0.1.0` (Tag auf dem
-Branch-Commit) — der Workflow baut und veröffentlicht dann den Release.
+## Handoff (2026-06-29)
+Release-Workflow ist fertig und committet (`vscode-release.yml`). Er ist jetzt
+**komplett über die GitHub-UI auslösbar** (der Nutzer arbeitet nicht lokal):
+- `workflow_dispatch`: Actions-Tab → „Run workflow" → erstellt einen Release
+  `vscode-v<version>` (Version aus `packages/vscode/package.json`) mit angehängter
+  `.vsix`. (Der „Run workflow"-Button erscheint, sobald die Workflow-Datei auf dem
+  Default-Branch liegt — also nach Merge von PR #1.)
+- Tag `vscode-v*` (z. B. via Releases-UI „Draft a new release" mit neuem Tag auf dem
+  Branch) → Workflow baut + hängt die `.vsix` an.
+
+Die gebaute `.vsix` (v0.1.0) wurde dem Nutzer zusätzlich direkt im Chat übergeben.
+Sandbox-Hinweis: Tag-Push aus der Sandbox ist blockiert (git-Scope nur Branch,
+HTTP 403); deshalb erfolgt das Auslösen durch den Nutzer in GitHub.
