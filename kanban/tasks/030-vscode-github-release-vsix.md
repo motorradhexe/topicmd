@@ -1,10 +1,11 @@
 ---
 id: 30
 title: 'VSCode: echter GitHub-Release mit .vsix'
-status: todo
+status: review
 priority: high
 created: 2026-06-29T07:00:00+02:00
-updated: 2026-06-29T07:00:00+02:00
+updated: 2026-06-29T09:16:00+02:00
+started: 2026-06-29T09:15:00+02:00
 tags:
     - vscode
     - release
