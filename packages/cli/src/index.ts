@@ -14,16 +14,18 @@ import { scaffoldAction } from './commands/scaffold.js';
 import { navBuildAction } from './commands/nav.js';
 import { i18nStatusAction } from './commands/i18n.js';
 
-/** Render an error as a single concise line (no stack trace). */
+/** Extract an error's message (no stack trace). May span multiple lines, e.g.
+ * a SchemaError that lists several issues. */
 function formatError(err: unknown): string {
   return err instanceof Error ? err.message : String(err);
 }
 
 /**
  * Wrap a command action so any failure (schema-load errors, I/O errors, unknown
- * scaffold types, …) prints a concise `topicmd: <message>` line to stderr and
- * sets exit code 1, instead of crashing with a raw stack trace. This gives every
- * command consistent, CI-friendly error behaviour.
+ * scaffold types, …) prints `topicmd: <message>` to stderr and sets exit code 1,
+ * instead of crashing with a raw stack trace. The message is the error's own
+ * text (which may be multi-line, e.g. a SchemaError listing several issues), not
+ * a stack trace. This gives every command consistent, CI-friendly error behaviour.
  */
 function runAction<A extends unknown[]>(
   fn: (...args: A) => void | Promise<void>,

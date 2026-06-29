@@ -24,7 +24,7 @@ Paketierbare `.vsix` erzeugen; Marketplace-Publish bewusst ausgeklammert.
 - `.github/workflows/vscode-release.yml`: workflow_dispatch + Tag `vscode-v*`, `vsce package`,
   `.vsix` als Artefakt — **kein** publish.
 - `.gitignore`: `*.vsix`.
-- `pnpm --filter @topicmd/vscode package` erzeugt valide `.vsix` ohne Warnungen.
+- `pnpm --filter topicmd-vscode package` erzeugt valide `.vsix` ohne Warnungen.
 
 ## Out-of-scope
 `vsce publish` (braucht Publisher-Konto + VSCE_PAT vom Maintainer).
