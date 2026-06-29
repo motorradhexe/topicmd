@@ -32,7 +32,7 @@ layout.
 
 ## Install
 
-Requires Node ≥ 20 and pnpm.
+Requires Node ≥ 22 and pnpm.
 
 ```bash
 pnpm install
@@ -92,7 +92,7 @@ Common options: `--schema <path>` (default `docs.schema.yaml`), `--root <dir>`
 - **Quick Scaffold** — the `topicmd: New Topic…` command creates a new topic
   with schema-valid frontmatter (same logic as `topicmd scaffold`).
 
-Build the extension bundle with `pnpm --filter @topicmd/vscode build`.
+Build the extension bundle with `pnpm --filter topicmd-vscode build`.
 
 ## Project layout
 
@@ -122,10 +122,19 @@ every push and pull request.
 
 ## Documentation
 
-The project documentation site lives in [`docs-site/`](docs-site/) (static HTML,
-no build step) and is deployed to GitHub Pages by
+Full technical documentation — CLI reference (per command, with options, exit
+codes, output, and diagnostic codes), schema reference, and the VS Code extension
+reference — lives at **<https://motorradhexe.github.io/topicmd/>**.
+
+The site is an [Astro Starlight](https://starlight.astro.build/) project under
+[`docs-site/`](docs-site/), deployed to GitHub Pages by
 [`.github/workflows/pages.yml`](.github/workflows/pages.yml) on changes to
-`docs-site/`. Preview locally by opening `docs-site/index.html` in a browser.
+`docs-site/`. Work on it locally with:
+
+```bash
+pnpm --filter docs-site dev       # local preview with hot reload
+pnpm --filter docs-site build     # production build to docs-site/dist
+```
 
 ## License
 

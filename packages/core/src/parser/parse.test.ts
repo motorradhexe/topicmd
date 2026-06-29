@@ -78,6 +78,25 @@ describe('parseTopic', () => {
     ]);
   });
 
+  it('falls back to empty frontmatter on malformed YAML (no throw)', () => {
+    const topic = parseTopic({
+      path: 'broken.md',
+      content: '---\ntitle: "unterminated\ntopic_type: task\n---\n\n# Body\n',
+    });
+    // Malformed YAML must not crash; frontmatter is dropped and the raw text is
+    // kept as the body so nothing is silently lost.
+    expect(topic.frontmatter).toEqual({});
+    expect(topic.body).toContain('# Body');
+  });
+
+  it('falls back to empty frontmatter when frontmatter is a non-object scalar', () => {
+    const topic = parseTopic({
+      path: 'scalar.md',
+      content: '---\njust a bare string\n---\n\n# Body\n',
+    });
+    expect(topic.frontmatter).toEqual({});
+  });
+
   it('parses JSX as opaque text when MDX is disabled (no throw)', () => {
     const topic = parseTopic({
       path: 'x.md',

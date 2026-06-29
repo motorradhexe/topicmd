@@ -14,9 +14,7 @@ import { readFileSync } from 'node:fs';
 import { dirname, relative, resolve as resolvePath } from 'node:path';
 import matter from 'gray-matter';
 import type { Diagnostic } from '../types/index.js';
-
-/** Matches `<!-- @include: path/to/fragment.md -->`. */
-const INCLUDE_RE = /<!--\s*@include:\s*(.+?)\s*-->/g;
+import { makeIncludeRegex } from '../parser/include.js';
 
 export interface FragmentResolverOptions {
   /** Root used to compute relative paths in usage and diagnostics. */
@@ -70,7 +68,7 @@ function expand(
     return content;
   }
 
-  return content.replace(INCLUDE_RE, (raw, rawTarget: string) => {
+  return content.replace(makeIncludeRegex(), (raw, rawTarget: string) => {
     const target = rawTarget.trim();
     const absTarget = resolvePath(baseDir, target);
     const relTarget = toRelative(ctx, absTarget);

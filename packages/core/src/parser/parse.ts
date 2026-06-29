@@ -19,6 +19,7 @@ import type { Root } from 'mdast';
 import { unified } from 'unified';
 import { visit } from 'unist-util-visit';
 import type { Topic, TopicFrontmatter } from '../types/index.js';
+import { makeIncludeRegex } from './include.js';
 
 /** A heading extracted from the body, used for structural contracts (#7). */
 export interface TopicHeading {
@@ -61,9 +62,6 @@ export interface TopicParserOptions {
   locales?: string[];
 }
 
-/** Matches `<!-- @include: path/to/fragment.md -->` (HTML-comment include). */
-const INCLUDE_RE = /<!--\s*@include:\s*(.+?)\s*-->/g;
-
 interface DerivedIdentity {
   id: string;
   locale: string;
@@ -94,6 +92,28 @@ export function deriveIdentity(
   return { id: withoutExt, locale: defaultLocale, isVariant: false };
 }
 
+/**
+ * Split frontmatter from body defensively. `gray-matter` can throw on malformed
+ * YAML and may return non-object `data`; rather than crash, fall back to empty
+ * frontmatter and let the validator (#7) report the resulting missing fields.
+ */
+function splitFrontmatter(content: string): { frontmatter: TopicFrontmatter; body: string } {
+  let data: unknown;
+  let body: string;
+  try {
+    const parsed = matter(content);
+    data = parsed.data;
+    body = parsed.content;
+  } catch {
+    return { frontmatter: {} as TopicFrontmatter, body: content };
+  }
+  const isPlainObject = !!data && typeof data === 'object' && !Array.isArray(data);
+  return {
+    frontmatter: (isPlainObject ? data : {}) as TopicFrontmatter,
+    body,
+  };
+}
+
 function buildProcessor(mdx: boolean) {
   const processor = unified().use(remarkParse);
   if (mdx) processor.use(remarkMdx);
@@ -102,7 +122,7 @@ function buildProcessor(mdx: boolean) {
 
 function extractIncludes(raw: string): IncludeDirective[] {
   const includes: IncludeDirective[] = [];
-  for (const m of raw.matchAll(INCLUDE_RE)) {
+  for (const m of raw.matchAll(makeIncludeRegex())) {
     includes.push({ target: m[1]!.trim(), raw: m[0] });
   }
   return includes;
@@ -142,8 +162,7 @@ export function parseTopic(
 ): ParsedTopic {
   const { mdx = false, defaultLocale = 'en', locales = [] } = options;
 
-  const { data, content: body } = matter(source.content);
-  const frontmatter = data as TopicFrontmatter;
+  const { frontmatter, body } = splitFrontmatter(source.content);
 
   const tree = buildProcessor(mdx).parse(body) as Root;
   const { headings, links, hasOrderedList } = extractFromTree(tree);

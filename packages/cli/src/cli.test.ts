@@ -2,11 +2,12 @@ import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { loadSchema, parseTopic, validateTopic } from '@topicmd/core';
 import { runValidate } from './commands/validate.js';
 import { buildIndexResult, indexAction } from './commands/index-cmd.js';
 import { scaffoldTopic } from './commands/scaffold.js';
+import { buildProgram } from './index.js';
 
 const basicRoot = fileURLToPath(
   new URL('../../../examples/basic', import.meta.url),
@@ -57,6 +58,37 @@ describe('scaffoldTopic', () => {
 
   it('throws on an unknown type', () => {
     expect(() => scaffoldTopic('tutorial', schema)).toThrow(/Unknown topic_type/);
+  });
+});
+
+describe('CLI error boundary', () => {
+  it('reports a missing schema as exit 1 with a concise message (no stack trace)', async () => {
+    const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const prevExit = process.exitCode;
+    process.exitCode = 0;
+    await buildProgram().parseAsync(
+      ['validate', '--schema', join(basicRoot, 'does-not-exist.yaml')],
+      { from: 'user' },
+    );
+    expect(process.exitCode).toBe(1);
+    expect(errSpy.mock.calls.flat().join('\n')).toMatch(/^topicmd: /m);
+    errSpy.mockRestore();
+    process.exitCode = prevExit;
+  });
+
+  it('reports an unknown scaffold type as exit 1 instead of throwing', async () => {
+    const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const logSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+    const prevExit = process.exitCode;
+    process.exitCode = 0;
+    await buildProgram().parseAsync(['scaffold', 'tutorial', '--schema', schemaPath], {
+      from: 'user',
+    });
+    expect(process.exitCode).toBe(1);
+    expect(errSpy.mock.calls.flat().join('\n')).toMatch(/Unknown topic_type/);
+    errSpy.mockRestore();
+    logSpy.mockRestore();
+    process.exitCode = prevExit;
   });
 });
 

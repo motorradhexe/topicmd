@@ -4,3 +4,6 @@ dist/
 *.tsbuildinfo
 .env
 docs.index.json
+coverage/
+*.vsix
+.astro/

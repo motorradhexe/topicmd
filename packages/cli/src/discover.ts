@@ -1,13 +1,14 @@
 /**
- * Shared CLI helpers: config resolution and topic discovery. Mirrors the
- * discovery `indexProject` performs in core, so `validate` and `index` see the
- * same set of topics.
+ * Shared CLI helpers: config resolution and topic discovery. Topic discovery is
+ * delegated to core's `discoverTopics`, the single discovery path that
+ * `indexProject` also uses, so `validate`, `index`, `nav`, and `i18n` always see
+ * the same set of topics.
  */
-import { existsSync, readdirSync } from 'node:fs';
-import { dirname, isAbsolute, join, resolve, sep } from 'node:path';
+import { existsSync } from 'node:fs';
+import { dirname, isAbsolute, join, resolve } from 'node:path';
 import {
+  discoverTopics,
   loadSchema,
-  parseTopicFile,
   type DocsSchema,
   type ParsedTopic,
 } from '@topicmd/core';
@@ -46,30 +47,11 @@ export function resolveConfig(options: CommonOptions): ResolvedConfig {
   };
 }
 
-/** Recursively collect *.md/*.mdx files under `dir`, excluding given paths. */
-export function walkMarkdown(dir: string, excludeAbs: string[]): string[] {
-  const out: string[] = [];
-  for (const entry of readdirSync(dir, { withFileTypes: true })) {
-    const path = join(dir, entry.name);
-    if (excludeAbs.some((ex) => path === ex || path.startsWith(ex + sep))) continue;
-    if (entry.isDirectory()) out.push(...walkMarkdown(path, excludeAbs));
-    else if (/\.(md|mdx)$/i.test(entry.name)) out.push(path);
-  }
-  return out;
-}
-
 /** Discover and parse all topics under the content dir (fragments excluded). */
 export function parseTopics(config: ResolvedConfig): ParsedTopic[] {
-  // resolve() normalizes away any trailing slash in fragments.path so the
-  // walk's exclusion (startsWith(ex + sep)) matches correctly.
-  const fragmentsAbs = resolve(config.rootDir, config.schema.fragments.path);
-  const mdx = config.schema.format.extensions?.includes('mdx') ?? false;
-  return walkMarkdown(config.contentDir, [fragmentsAbs]).map((file) =>
-    parseTopicFile(file, {
-      rootDir: config.rootDir,
-      mdx,
-      defaultLocale: config.schema.i18n.default,
-      locales: config.schema.i18n.locales,
-    }),
-  );
+  return discoverTopics({
+    rootDir: config.rootDir,
+    schema: config.schema,
+    contentDir: config.contentDir,
+  });
 }

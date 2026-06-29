@@ -1,0 +1,44 @@
+---
+title: topicmd
+description: A docs-as-code toolchain for semantic structure, reusable content, navigation profiles, i18n coverage, and AI-assisted topic management on Markdown projects.
+template: splash
+hero:
+  tagline: Documentation is not "code with text files" — it is relationships with files. Model structure, navigation, audience, and language explicitly.
+  actions:
+    - text: Get started
+      link: ./guide/introduction/
+      icon: right-arrow
+    - text: CLI reference
+      link: ./cli/
+      icon: open-book
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid stagger>
+  <Card title="Configurable dimensions" icon="setting">
+    Each project defines its own filter axes (product, audience, level, …) in
+    `docs.schema.yaml`. Core hardcodes none of them.
+  </Card>
+  <Card title="Profiles, not content trees" icon="puzzle">
+    A profile is a named, partial filter over dimensions. The same topic
+    satisfies many profiles without duplication.
+  </Card>
+  <Card title="Fragments & variables" icon="document">
+    Reusable Markdown snippets via `<!-- @include: … -->` and project-wide
+    `{{vars.*}}` substitution.
+  </Card>
+  <Card title="Navigation decoupled from content" icon="list-format">
+    `nav/*.yaml` manifests reference topics by path. Reorganising nav never
+    moves files.
+  </Card>
+  <Card title="i18n as an orthogonal axis" icon="translate">
+    Locale variants via filename suffix (`topic.de.md`); per-locale coverage and
+    stale-translation reporting.
+  </Card>
+  <Card title="Index as the AI artifact" icon="seti:json">
+    `docs.index.json` captures what exists, how it relates, what's missing per
+    profile, and where translations are stale.
+  </Card>
+</CardGrid>

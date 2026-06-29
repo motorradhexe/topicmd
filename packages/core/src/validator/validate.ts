@@ -13,11 +13,17 @@
  */
 import type {
   Diagnostic,
+  Dimension,
   DocsSchema,
   TopicTypeDef,
   ValidationResult,
 } from '../types/index.js';
 import type { ParsedTopic } from '../parser/index.js';
+
+/** Index dimensions by id once, so per-topic validation is a map lookup. */
+function dimensionsById(schema: DocsSchema): Map<string, Dimension> {
+  return new Map(schema.dimensions.map((d) => [d.id, d]));
+}
 
 function isPresent(value: unknown): boolean {
   if (value === undefined || value === null) return false;
@@ -66,12 +72,11 @@ function validateFields(
 
 function validateDimensions(
   topic: ParsedTopic,
-  schema: DocsSchema,
+  byId: Map<string, Dimension>,
   push: (d: Omit<Diagnostic, 'file'>) => void,
 ): void {
   const dims = topic.frontmatter.dimensions;
   if (!dims) return;
-  const byId = new Map(schema.dimensions.map((d) => [d.id, d]));
 
   for (const [dimId, raw] of Object.entries(dims)) {
     const dimension = byId.get(dimId);
@@ -96,10 +101,16 @@ function validateDimensions(
   }
 }
 
-/** Validate a single parsed topic against the schema. */
+/**
+ * Validate a single parsed topic against the schema.
+ *
+ * `byId` is an optional pre-built dimension map; `validateTopics` passes one so
+ * the map is constructed once per run instead of once per topic.
+ */
 export function validateTopic(
   topic: ParsedTopic,
   schema: DocsSchema,
+  byId: Map<string, Dimension> = dimensionsById(schema),
 ): Diagnostic[] {
   const diagnostics: Diagnostic[] = [];
   const push = (d: Omit<Diagnostic, 'file'>): void => {
@@ -114,7 +125,7 @@ export function validateTopic(
       message: 'Missing required field "topic_type"',
     });
     // Dimensions are still checkable without a known type.
-    validateDimensions(topic, schema, push);
+    validateDimensions(topic, byId, push);
     return diagnostics;
   }
 
@@ -125,12 +136,12 @@ export function validateTopic(
       code: 'unknown-topic-type',
       message: `Unknown topic_type "${topicType}" (not defined in schema)`,
     });
-    validateDimensions(topic, schema, push);
+    validateDimensions(topic, byId, push);
     return diagnostics;
   }
 
   validateFields(topic, typeDef, push);
-  validateDimensions(topic, schema, push);
+  validateDimensions(topic, byId, push);
 
   if (typeDef.contract?.must_contain) {
     const token = typeDef.contract.must_contain;
@@ -153,7 +164,8 @@ export function validateTopics(
   topics: ParsedTopic[],
   schema: DocsSchema,
 ): ValidationResult {
-  const diagnostics = topics.flatMap((t) => validateTopic(t, schema));
+  const byId = dimensionsById(schema);
+  const diagnostics = topics.flatMap((t) => validateTopic(t, schema, byId));
   return {
     ok: !diagnostics.some((d) => d.severity === 'error'),
     diagnostics,

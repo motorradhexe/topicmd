@@ -185,6 +185,25 @@ Generated artifact (not versioned in git — in `.gitignore`), updated per build
 
 ---
 
+## Development Workflow
+
+**Always work through the kanban-md board.** This repo tracks all work as Markdown
+task files under `kanban/` (config in `kanban/config.yml`, tasks in `kanban/tasks/`).
+There is no untracked work: every change starts from a ticket.
+
+- **Ticket-driven**: create or pick a task before coding. Flow:
+  `backlog → todo → in-progress → review → done`. Set a task to `in-progress`
+  (claim it) when you start, and to `review`/`done` when it's complete.
+- **Commit convention**: alongside the substantive commits, mark board changes with
+  `chore(board): task #NN done` so history stays in sync with the board.
+- **Parallel agents are allowed** — multiple agents may work different tickets at the
+  same time **as long as the task dependencies allow it** (no shared files, no ordering
+  constraint between them). Tickets that depend on each other (`depends_on`) are
+  serialized; independent tickets run in parallel. See the `kanban-based-development`
+  convention for claims and handoffs.
+
+---
+
 ## Package Structure (pnpm monorepo)
 
 ```

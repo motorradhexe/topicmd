@@ -5,6 +5,10 @@
 import * as vscode from 'vscode';
 import type { DocsSchema } from '@topicmd/core';
 import { computeDiagnostics, getCompletions, type FrontmatterDiagnostic } from './frontmatter.js';
+import { keyedDebounce } from './debounce.js';
+
+/** Idle delay before re-validating a buffer after edits. */
+const DIAGNOSTICS_DEBOUNCE_MS = 300;
 
 const LANGUAGES = ['markdown', 'mdx'];
 
@@ -47,12 +51,22 @@ export function registerFrontmatterIntelligence(
     collection.set(document.uri, diagnostics);
   };
 
+  // Re-validation on every keystroke is wasteful (a full parse + validate per
+  // change); debounce edits per document. Opens and the initial scan run eagerly.
+  const debounced = keyedDebounce(refresh, DIAGNOSTICS_DEBOUNCE_MS);
+
   context.subscriptions.push(
     completion,
     collection,
+    { dispose: () => debounced.cancelAll() },
     vscode.workspace.onDidOpenTextDocument(refresh),
-    vscode.workspace.onDidChangeTextDocument((e) => refresh(e.document)),
-    vscode.workspace.onDidCloseTextDocument((doc) => collection.delete(doc.uri)),
+    vscode.workspace.onDidChangeTextDocument((e) =>
+      debounced.run(e.document.uri.toString(), e.document),
+    ),
+    vscode.workspace.onDidCloseTextDocument((doc) => {
+      debounced.cancel(doc.uri.toString());
+      collection.delete(doc.uri);
+    }),
   );
   vscode.workspace.textDocuments.forEach(refresh);
 }

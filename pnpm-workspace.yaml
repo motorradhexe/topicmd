@@ -1,5 +1,13 @@
 packages:
   - 'packages/*'
   - 'examples/*'
+  - 'docs-site'
 allowBuilds:
+  # Native deps of @vscode/vsce that are only needed for *publishing* (signing
+  # and OS credential storage). We package the .vsix but do not publish from
+  # here, so their build scripts are skipped.
+  '@vscode/vsce-sign': false
   esbuild: true
+  keytar: false
+  # Astro/Starlight image optimization needs sharp's native build.
+  sharp: true
