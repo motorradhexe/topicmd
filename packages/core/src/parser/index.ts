@@ -11,3 +11,5 @@ export type {
   IncludeDirective,
   TopicParserOptions,
 } from './parse.js';
+export { updateFrontmatter } from './serialize.js';
+export type { FrontmatterPatch } from './serialize.js';

@@ -60,13 +60,14 @@ export type {
   ProfileEntry,
 } from './nav/index.js';
 
-export { parseTopic, parseTopicFile, deriveIdentity } from './parser/index.js';
+export { parseTopic, parseTopicFile, deriveIdentity, updateFrontmatter } from './parser/index.js';
 export type {
   ParsedTopic,
   TopicHeading,
   TopicLink,
   IncludeDirective,
   TopicParserOptions,
+  FrontmatterPatch,
 } from './parser/index.js';
 
 export { resolveFragments, resolveFragmentsInFile } from './fragments/index.js';

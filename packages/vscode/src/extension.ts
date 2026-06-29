@@ -12,10 +12,13 @@ import { loadSchema, type DocsIndex } from '@topicmd/core';
 import { collectHealth, type HealthCategory, type HealthEntry } from './health.js';
 import { registerFrontmatterIntelligence } from './intelligence.js';
 import { registerScaffoldCommand } from './scaffoldCommand.js';
+import { TopicsViewProvider } from './topicsPanel.js';
 import { debounce } from './debounce.js';
 
 /** Coalesce window for rapid index rewrites (e.g. a watch build). */
 const INDEX_REFRESH_DEBOUNCE_MS = 1000;
+/** Coalesce window for content edits that affect the Topics panel. */
+const TOPICS_REFRESH_DEBOUNCE_MS = 600;
 
 type TreeNode =
   | { kind: 'category'; category: HealthCategory }
@@ -97,6 +100,24 @@ export function activate(context: vscode.ExtensionContext): void {
   watcher.onDidCreate(() => refreshHealth.run());
   watcher.onDidDelete(() => refreshHealth.run());
   context.subscriptions.push(watcher, { dispose: () => refreshHealth.cancel() });
+
+  // Topics panel: faceted, tree-free topic management (the primary view).
+  const topics = new TopicsViewProvider(context, workspaceRoot);
+  context.subscriptions.push(
+    vscode.window.registerWebviewViewProvider(TopicsViewProvider.viewId, topics, {
+      webviewOptions: { retainContextWhenHidden: true },
+    }),
+    vscode.commands.registerCommand('topicmd.refreshTopics', () => topics.refresh()),
+    vscode.commands.registerCommand('topicmd.newTopic', () => void topics.createTopic()),
+  );
+
+  // Refresh the Topics panel when content or the schema changes (coalesced).
+  const topicsRefresh = debounce(() => topics.refresh(), TOPICS_REFRESH_DEBOUNCE_MS);
+  const contentWatcher = vscode.workspace.createFileSystemWatcher('**/*.{md,mdx,yaml,yml}');
+  contentWatcher.onDidChange(() => topicsRefresh.run());
+  contentWatcher.onDidCreate(() => topicsRefresh.run());
+  contentWatcher.onDidDelete(() => topicsRefresh.run());
+  context.subscriptions.push(contentWatcher, { dispose: () => topicsRefresh.cancel() });
 
   // Quick Scaffold (#12): create a new topic from a topic type.
   registerScaffoldCommand(context, workspaceRoot);
