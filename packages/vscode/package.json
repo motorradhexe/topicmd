@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "publisher": "topicmd",
   "license": "MIT",
-  "description": "Topic Health panel, frontmatter intelligence, and Quick Scaffold for docs-as-code Markdown projects.",
+  "description": "Manage documentation topics in VS Code by meaning — type, dimensions, profiles, language — instead of by folder tree.",
   "categories": ["Other", "Linters"],
   "keywords": ["markdown", "documentation", "docs-as-code", "i18n", "topicmd"],
   "icon": "icon.png",
@@ -22,28 +22,58 @@
   },
   "main": "./dist/extension.js",
   "contributes": {
-    "views": {
-      "explorer": [
+    "viewsContainers": {
+      "activitybar": [
         {
-          "id": "topicmdHealth",
-          "name": "Topic Health"
+          "id": "topicmd",
+          "title": "topicmd",
+          "icon": "media/topicmd.svg"
+        }
+      ]
+    },
+    "views": {
+      "topicmd": [
+        {
+          "id": "topicmdTopics",
+          "name": "Topics",
+          "type": "webview"
         }
       ]
     },
     "commands": [
       {
-        "command": "topicmd.refreshHealth",
-        "title": "topicmd: Refresh Topic Health"
+        "command": "topicmd.newTopic",
+        "title": "topicmd: New Topic…",
+        "icon": "$(add)"
+      },
+      {
+        "command": "topicmd.refreshTopics",
+        "title": "topicmd: Refresh Topics",
+        "icon": "$(refresh)"
       },
       {
         "command": "topicmd.scaffoldTopic",
-        "title": "topicmd: New Topic…"
+        "title": "topicmd: Scaffold Topic (preview in editor)"
       }
-    ]
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "topicmd.newTopic",
+          "when": "view == topicmdTopics",
+          "group": "navigation"
+        },
+        {
+          "command": "topicmd.refreshTopics",
+          "when": "view == topicmdTopics",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "scripts": {
-    "build": "esbuild src/extension.ts --bundle --platform=node --format=cjs --external:vscode --minify --outfile=dist/extension.js",
-    "build:dev": "esbuild src/extension.ts --bundle --platform=node --format=cjs --external:vscode --sourcemap --outfile=dist/extension.js",
+    "build": "node esbuild.mjs",
+    "build:dev": "node esbuild.mjs --dev",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "vscode:prepublish": "pnpm run build",
     "package": "vsce package --no-dependencies"
